@@ -5,53 +5,18 @@
 [![Kotlin](https://img.shields.io/badge/kotlin-multiplatform--mobile-orange.svg?logo=kotlin)](http://kotlinlang.org)
 [![Kotlin](https://img.shields.io/badge/kotlin-2.1.0-blue.svg?logo=kotlin)](http://kotlinlang.org)
 ![Java](https://img.shields.io/badge/java-17-blue.svg?logo=OPENJDK)
-[![Maven Central](https://img.shields.io/maven-central/v/at.asitplus.wallet/eupidcredential)](https://mvnrepository.com/artifact/at.asitplus.wallet/eupidcredential/)
+[![Maven Central](https://img.shields.io/maven-central/v/at.asitplus.wallet/eupidcredential-sdjwt)](https://mvnrepository.com/artifact/at.asitplus.wallet/eupidcredential/)
 
-Use data provided by EU Wallets as a W3C VC, SD-JWT, or ISO 18013-5 credential, with the help of [VC-K](https://github.com/a-sit-plus/vck).
 
-Be sure to call `at.asitplus.wallet.eupid.Initializer.initWithVCK` first thing in your application.
+Use data provided by EU Wallets as a SD-JWT credential, with the help of [VC-K](https://github.com/a-sit-plus/vck).
+
+In ARF 1.8.0 the SD-JWT claim names as well as the value for `vct` did change (now it is `urn:eudi:pid:1`), so we decided to create a new credential scheme for VC-K.
+
+For the ISO-compliant version as well as SD-JWT prior to ARF 1.8.0 of this credential see <https://github.com/a-sit-plus/eu-pid-credential>.
+
+Be sure to call `at.asitplus.wallet.eupidsdjwt.Initializer.initWithVCK()` first thing in your application.
 
 See [ARF PID Rulebook](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-3/annex-3.01-pid-rulebook.md) for a list of attributes.
-
-These are implemented for ISO:
-- `family_name`
-- `given_name`
-- `birth_date`
-- `age_over_12`
-- `age_over_14`
-- `age_over_16`
-- `age_over_18`
-- `age_over_21`
-- `age_in_years`
-- `age_birth_year`
-- `family_name_birth`
-- `given_name_birth`
-- `birth_place`
-- `birth_country` (removed in ARF 1.5.0)
-- `birth_state` (removed in ARF 1.5.0)
-- `birth_city` (removed in ARF 1.5.0)
-- `resident_address`
-- `resident_country`
-- `resident_state`
-- `resident_city`
-- `resident_postal_code`
-- `resident_street`
-- `resident_house_number`
-- `sex`
-- `nationality`
-- `issuance_date`
-- `expiry_date`
-- `issuing_authority`
-- `document_number`
-- `administrative_number` (removed in ARF 1.5.0)
-- `issuing_country`
-- `issuing_jurisdiction`
-- `personal_administrative_number`
-- `portrait`
-- `email_address`
-- `mobile_phone_number`
-- `trust_anchor`
-- `location_status`
 
 These are implemented for SD-JWT:
 - `family_name`
@@ -67,8 +32,8 @@ These are implemented for SD-JWT:
 - `birth_family_name`
 - `birth_given_name`
 - `place_of_birth.locality`
-- `place_of_birth.country` (removed in ARF 1.5.0)
-- `place_of_birth.region` (removed in ARF 1.5.0)
+- `place_of_birth.country`
+- `place_of_birth.region`
 - `address.formatted`
 - `address.country`
 - `address.region`
@@ -76,76 +41,24 @@ These are implemented for SD-JWT:
 - `address.postal_code`
 - `address.street_address`
 - `address.house_number`
-- `gender`
+- `sex`
 - `nationalities`
-- `iat`
-- `exp`
+- `date_of_issuance`
+- `date_of_expiry`
 - `issuing_authority`
 - `document_number`
-- `administrative_number` (removed in ARF 1.5.0)
 - `issuing_country`
 - `issuing_jurisdiction`
 - `personal_administrative_number`
-- `portrait`
+- `picture`
 - `email`
 - `phone_number`
 - `trust_anchor`
-- `location_status`
 
 ## Changelog
 
-Release 3.0.0:
- - Update to ARF 1.5.0, deprecating removed claims, adding new claims, changing `nationality` from single element to collection
-
-Release 2.3.2:
- - VC-K 5.3.0
-
-Release 2.3.1:
-- Add additional claims `personal_administrative_number` and `portrait` (acc. to Implementing Act)
-
-Release 2.3.0:
-- Implement mapping to SD-JWT claim names according to <https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/pull/160>
-
-Release 2.2.3:
- - VC-K 5.2.2
- - Add additional claims: `age_over_12`, `age_over_14`, `age_over_16`, `age_over_21`
-
-Release 2.2.2:
- - VC-K 5.2.1
- - Kotlin 2.1.0
-
-Release 2.2.1:
- - Fix serialization in ISO format
-
-Release 2.2.0:
- - Update to VC-K 5.0.0
-
-Release 2.1.3:
- - Update to VC-K 4.1.0
-
-Release 2.1.2:
- - Update to `vclib` 4.0.0
-
-Release 2.1.1:
- - Fix required claim names in `EuPidScheme` to contain `age_over_18` and `issuing_country`
-
-Release 2.1.0:
- - Update to `vclib` 3.8.0
- - Use correct namespace, doc type and SD-JWT type
-
-Release 2.0.2:
- - Update to `vclib` 3.7.0
- - Koltin 2.0.0
-
-Release 2.0.1:
- - Fix publishing, re-releasing 2.0.0
-
-Release 2.0.0:
- - Implement metadata, based on PID Rule Book 1.0.0 from November 2023
-
 Release 1.0.0:
- - Initial release, based on PID Rule Book 1.0.0 from November 2023
-
+ - Initial release for EU PID acc. to ARF 1.9.0
 
 <br>
 

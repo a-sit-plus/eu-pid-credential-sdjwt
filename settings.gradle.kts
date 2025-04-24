@@ -10,5 +10,5 @@ pluginManagement {
     }
 }
 
-rootProject.name = "eu-pid-credential"
-include(":eupidcredential")
+rootProject.name = "eu-pid-credential-sd-jwt"
+include(":eupidcredential-sdjwt")

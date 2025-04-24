@@ -1,4 +1,4 @@
-package at.asitplus.wallet.eupid
+package at.asitplus.wallet.eupidsdjwt
 
 import at.asitplus.wallet.lib.data.vckJsonSerializer
 import at.asitplus.wallet.lib.iso.vckCborSerializer
@@ -8,7 +8,6 @@ import kotlinx.datetime.Clock
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.decodeFromByteArray
 import kotlinx.serialization.encodeToByteArray
-import kotlinx.serialization.encodeToString
 import kotlin.random.Random
 import kotlin.random.nextUInt
 import kotlin.time.Duration.Companion.seconds
@@ -44,7 +43,7 @@ class SdJwtSerializationTest : FunSpec({
                 street = randomString(),
                 houseNumber = randomString(),
             ),
-            gender = IsoIec5218Gender.NOT_APPLICABLE.toString(),
+            sex = IsoIec5218Gender.NOT_APPLICABLE,
             nationalities = setOf(randomString()),
             issuanceDate = Clock.System.now(),
             expiryDate = Clock.System.now().plus(300.seconds),
@@ -57,7 +56,6 @@ class SdJwtSerializationTest : FunSpec({
             email = randomString(),
             phoneNumber = randomString(),
             trustAnchor = randomString(),
-            locationStatus = randomString(),
         )
         val json = vckJsonSerializer.encodeToString(credential)
         vckJsonSerializer.decodeFromString<EuPidCredentialSdJwt>(json) shouldBe credential

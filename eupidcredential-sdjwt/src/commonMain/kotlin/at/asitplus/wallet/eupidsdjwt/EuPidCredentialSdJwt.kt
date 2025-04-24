@@ -1,7 +1,6 @@
-package at.asitplus.wallet.eupid
+package at.asitplus.wallet.eupidsdjwt
 
-import at.asitplus.wallet.eupid.EuPidScheme.Attributes
-import at.asitplus.wallet.eupid.EuPidScheme.SdJwtAttributes
+import at.asitplus.wallet.eupidsdjwt.EuPidScheme.SdJwtAttributes
 import io.matthewnelson.encoding.base64.Base64
 import io.matthewnelson.encoding.core.Encoder.Companion.encodeToString
 import kotlinx.datetime.Instant
@@ -12,9 +11,8 @@ import kotlinx.serialization.Serializable
 
 
 /**
- * PID according to [EU PID Rule Book, v1.5.0 from February 2025](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-3/annex-3.01-pid-rulebook.md)
- * with mapping of claim names according to [PR #160](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/pull/160)
- **/
+ * PID scheme according to [ANNEX 3.0.1 PID Rulebook, v1.9.0 from April 2025](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v1.9.0/docs/annexes/annex-3/annex-3.01-pid-rulebook.md)
+ */
 @Serializable
 data class EuPidCredentialSdJwt(
     /** Current last name(s) or surname(s) of the user to whom the person identification data relates. */
@@ -59,8 +57,8 @@ data class EuPidCredentialSdJwt(
     val address: AddressSdJwt,
 
     /** PID User’s gender, using a string value like `female`, `male`, or custom text values. */
-    @SerialName(SdJwtAttributes.GENDER)
-    val gender: String? = null,
+    @SerialName(SdJwtAttributes.SEX)
+    val sex: IsoIec5218Gender? = null,
 
     /** Array of Alpha-2 country code as specified in ISO 3166-1, representing the nationality of the PID User. */
     @SerialName(SdJwtAttributes.NATIONALITIES)
@@ -85,12 +83,6 @@ data class EuPidCredentialSdJwt(
     /** A number for the PID, assigned by the PID Provider. */
     @SerialName(SdJwtAttributes.DOCUMENT_NUMBER)
     val documentNumber: String? = null,
-
-    /** A number assigned by the PID Provider for audit control or other purposes. */
-    @Suppress("DEPRECATION")
-    @Deprecated("Removed in ARF 1.5.0")
-    @SerialName(SdJwtAttributes.ADMINISTRATIVE_NUMBER)
-    val administrativeNumber: String? = null,
 
     /** Alpha-2 country code, as defined in ISO 3166-1, of the PID Provider's country or territory. */
     @SerialName(SdJwtAttributes.ISSUING_COUNTRY)
@@ -130,11 +122,6 @@ data class EuPidCredentialSdJwt(
     /** This attribute indicates at least the URL at which a machine-readable version of the trust anchor to be used for verifying the PID can be found or looked up */
     @SerialName(SdJwtAttributes.TRUST_ANCHOR)
     val trustAnchor: String? = null,
-
-    /** The location of validity status information on the person identification data where the providers of person identification data revoke person identification data. */
-    @SerialName(SdJwtAttributes.LOCATION_STATUS)
-    val locationStatus: String? = null,
-
 ) {
 
     override fun equals(other: Any?): Boolean {
@@ -153,13 +140,12 @@ data class EuPidCredentialSdJwt(
         if (givenNameBirth != other.givenNameBirth) return false
         if (placeOfBirth != other.placeOfBirth) return false
         if (address != other.address) return false
-        if (gender != other.gender) return false
+        if (sex != other.sex) return false
         if (nationalities != other.nationalities) return false
         if (issuanceDate != other.issuanceDate) return false
         if (expiryDate != other.expiryDate) return false
         if (issuingAuthority != other.issuingAuthority) return false
         if (documentNumber != other.documentNumber) return false
-        if (administrativeNumber != other.administrativeNumber) return false
         if (issuingCountry != other.issuingCountry) return false
         if (issuingJurisdiction != other.issuingJurisdiction) return false
         if (personalAdministrativeNumber != other.personalAdministrativeNumber) return false
@@ -167,7 +153,6 @@ data class EuPidCredentialSdJwt(
         if (email != other.email) return false
         if (phoneNumber != other.phoneNumber) return false
         if (trustAnchor != other.trustAnchor) return false
-        if (locationStatus != other.locationStatus) return false
 
         return true
     }
@@ -183,13 +168,12 @@ data class EuPidCredentialSdJwt(
         result = 31 * result + (givenNameBirth?.hashCode() ?: 0)
         result = 31 * result + placeOfBirth.hashCode()
         result = 31 * result + address.hashCode()
-        result = 31 * result + (gender?.hashCode() ?: 0)
+        result = 31 * result + (sex?.hashCode() ?: 0)
         result = 31 * result + (nationalities?.hashCode() ?: 0)
         result = 31 * result + issuanceDate.hashCode()
         result = 31 * result + expiryDate.hashCode()
         result = 31 * result + issuingAuthority.hashCode()
         result = 31 * result + (documentNumber?.hashCode() ?: 0)
-        result = 31 * result + (administrativeNumber?.hashCode() ?: 0)
         result = 31 * result + issuingCountry.hashCode()
         result = 31 * result + (issuingJurisdiction?.hashCode() ?: 0)
         result = 31 * result + (personalAdministrativeNumber?.hashCode() ?: 0)
@@ -197,7 +181,6 @@ data class EuPidCredentialSdJwt(
         result = 31 * result + (email?.hashCode() ?: 0)
         result = 31 * result + (phoneNumber?.hashCode() ?: 0)
         result = 31 * result + (trustAnchor?.hashCode() ?: 0)
-        result = 31 * result + (locationStatus?.hashCode() ?: 0)
         return result
     }
 
@@ -213,13 +196,12 @@ data class EuPidCredentialSdJwt(
                 "givenNameBirth=$givenNameBirth, " +
                 "placeOfBirth=$placeOfBirth, " +
                 "address=$address, " +
-                "gender=$gender, " +
+                "gender=$sex, " +
                 "nationalities=$nationalities, " +
                 "issuanceDate=$issuanceDate, " +
                 "expiryDate=$expiryDate, " +
                 "issuingAuthority='$issuingAuthority', " +
                 "documentNumber=$documentNumber, " +
-                "administrativeNumber=$administrativeNumber, " +
                 "issuingCountry='$issuingCountry', " +
                 "issuingJurisdiction=$issuingJurisdiction, " +
                 "personalAdministrativeNumber=$personalAdministrativeNumber, " +
@@ -227,7 +209,6 @@ data class EuPidCredentialSdJwt(
                 "email=$email, " +
                 "phoneNumber=$phoneNumber, " +
                 "trustAnchor=$trustAnchor, " +
-                "locationStatus=$locationStatus" +
                 ")"
     }
 }

@@ -1,4 +1,4 @@
-package at.asitplus.wallet.eupid
+package at.asitplus.wallet.eupidsdjwt
 
 import io.kotest.core.config.AbstractProjectConfig
 import kotlinx.datetime.Instant
