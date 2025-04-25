@@ -22,7 +22,7 @@ object Initializer {
      */
     fun initWithVCK() {
         LibraryInitializer.registerExtensionLibrary(
-            credentialScheme = EuPidScheme,
+            credentialScheme = EuPidSdJwtScheme,
             jsonValueEncoder = jsonValueEncoder(),
         )
     }

@@ -1,6 +1,6 @@
 package at.asitplus.wallet.eupidsdjwt
 
-import at.asitplus.wallet.eupidsdjwt.EuPidScheme.SdJwtAttributes
+import at.asitplus.wallet.eupidsdjwt.EuPidSdJwtScheme.SdJwtAttributes
 import io.matthewnelson.encoding.base64.Base64
 import io.matthewnelson.encoding.core.Encoder.Companion.encodeToString
 import kotlinx.datetime.Instant

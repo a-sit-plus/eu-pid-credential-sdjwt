@@ -7,7 +7,7 @@ import at.asitplus.wallet.lib.data.ConstantIndex.CredentialRepresentation.*
 /**
  * PID scheme according to [ANNEX 3.0.1 PID Rulebook, v1.9.0 from April 2025](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v1.9.0/docs/annexes/annex-3/annex-3.01-pid-rulebook.md)
  */
-object EuPidScheme : ConstantIndex.CredentialScheme {
+object EuPidSdJwtScheme : ConstantIndex.CredentialScheme {
     override val schemaUri: String = "https://wallet.a-sit.at/schemas/1.0.0/eupidsdjwt.json"
     override val sdJwtType: String = "urn:eudi:pid:1"
     override val supportedRepresentations: Collection<ConstantIndex.CredentialRepresentation> =
