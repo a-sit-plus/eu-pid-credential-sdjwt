@@ -219,6 +219,10 @@ data class AgeEqualOrOverSdJwt(
     @SerialName(SdJwtAttributes.AgeEqualOrOver.EQUAL_OR_OVER_12)
     val equalOrOver12: Boolean? = null,
 
+    /** Additional current age attestations: Attesting whether the PID User is currently over 13 years old. */
+    @SerialName(SdJwtAttributes.AgeEqualOrOver.EQUAL_OR_OVER_13)
+    val equalOrOver13: Boolean? = null,
+
     /** Additional current age attestations: Attesting whether the PID User is currently over 14 years old. */
     @SerialName(SdJwtAttributes.AgeEqualOrOver.EQUAL_OR_OVER_14)
     val equalOrOver14: Boolean? = null,
@@ -234,6 +238,26 @@ data class AgeEqualOrOverSdJwt(
     /** Additional current age attestations: Attesting whether the PID User is currently over 21 years old. */
     @SerialName(SdJwtAttributes.AgeEqualOrOver.EQUAL_OR_OVER_21)
     val equalOrOver21: Boolean? = null,
+
+    /** Additional current age attestations: Attesting whether the PID User is currently over 25 years old. */
+    @SerialName(SdJwtAttributes.AgeEqualOrOver.EQUAL_OR_OVER_25)
+    val equalOrOver25: Boolean? = null,
+
+    /** Additional current age attestations: Attesting whether the PID User is currently over 60 years old. */
+    @SerialName(SdJwtAttributes.AgeEqualOrOver.EQUAL_OR_OVER_60)
+    val equalOrOver60: Boolean? = null,
+
+    /** Additional current age attestations: Attesting whether the PID User is currently over 62 years old. */
+    @SerialName(SdJwtAttributes.AgeEqualOrOver.EQUAL_OR_OVER_62)
+    val equalOrOver62: Boolean? = null,
+
+    /** Additional current age attestations: Attesting whether the PID User is currently over 65 years old. */
+    @SerialName(SdJwtAttributes.AgeEqualOrOver.EQUAL_OR_OVER_65)
+    val equalOrOver65: Boolean? = null,
+
+    /** Additional current age attestations: Attesting whether the PID User is currently over 68 years old. */
+    @SerialName(SdJwtAttributes.AgeEqualOrOver.EQUAL_OR_OVER_68)
+    val equalOrOver68: Boolean? = null,
 )
 
 @Serializable

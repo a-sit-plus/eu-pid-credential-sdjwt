@@ -23,10 +23,16 @@ These are implemented for SD-JWT:
 - `given_name`
 - `birthdate`
 - `age_equal_or_over.12`
+- `age_equal_or_over.13`
 - `age_equal_or_over.14`
 - `age_equal_or_over.16`
 - `age_equal_or_over.18`
 - `age_equal_or_over.21`
+- `age_equal_or_over.25`
+- `age_equal_or_over.60`
+- `age_equal_or_over.62`
+- `age_equal_or_over.65`
+- `age_equal_or_over.68`
 - `age_in_years`
 - `age_birth_year`
 - `birth_family_name`
@@ -56,6 +62,9 @@ These are implemented for SD-JWT:
 - `trust_anchor`
 
 ## Changelog
+
+Release 1.0.1:
+- Add additional claims `age_over_13`, `age_over_25`, `age_over_60`, `age_over_62`, `age_over_65`, `age_over_68`
 
 Release 1.0.0:
  - Initial release for EU PID acc. to ARF 1.9.0
