@@ -93,6 +93,9 @@ object EuPidSdJwtScheme : ConstantIndex.CredentialScheme {
         /** Additional current age attestations: Attesting whether the PID User is currently over 12 years old. */
         const val AGE_EQUAL_OR_OVER_12 = "$PREFIX_AGE_EQUAL_OR_OVER.12"
 
+        /** Additional current age attestations: Attesting whether the PID User is currently over 13 years old. */
+        const val AGE_EQUAL_OR_OVER_13 = "$PREFIX_AGE_EQUAL_OR_OVER.13"
+
         /** Additional current age attestations: Attesting whether the PID User is currently over 14 years old. */
         const val AGE_EQUAL_OR_OVER_14 = "$PREFIX_AGE_EQUAL_OR_OVER.14"
 
@@ -104,6 +107,21 @@ object EuPidSdJwtScheme : ConstantIndex.CredentialScheme {
 
         /** Additional current age attestations: Attesting whether the PID User is currently over 21 years old. */
         const val AGE_EQUAL_OR_OVER_21 = "$PREFIX_AGE_EQUAL_OR_OVER.21"
+
+        /** Additional current age attestations: Attesting whether the PID User is currently over 25 years old. */
+        const val AGE_EQUAL_OR_OVER_25 = "$PREFIX_AGE_EQUAL_OR_OVER.25"
+
+        /** Additional current age attestations: Attesting whether the PID User is currently over 60 years old. */
+        const val AGE_EQUAL_OR_OVER_60 = "$PREFIX_AGE_EQUAL_OR_OVER.60"
+
+        /** Additional current age attestations: Attesting whether the PID User is currently over 62 years old. */
+        const val AGE_EQUAL_OR_OVER_62 = "$PREFIX_AGE_EQUAL_OR_OVER.62"
+
+        /** Additional current age attestations: Attesting whether the PID User is currently over 65 years old. */
+        const val AGE_EQUAL_OR_OVER_65 = "$PREFIX_AGE_EQUAL_OR_OVER.65"
+
+        /** Additional current age attestations: Attesting whether the PID User is currently over 68 years old. */
+        const val AGE_EQUAL_OR_OVER_68 = "$PREFIX_AGE_EQUAL_OR_OVER.68"
 
         object AgeEqualOrOver {
             /** Additional current age attestations: Attesting whether the PID User is currently over 12 years old. */
