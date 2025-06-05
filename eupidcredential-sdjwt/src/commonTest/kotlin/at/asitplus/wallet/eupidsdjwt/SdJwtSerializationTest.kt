@@ -51,8 +51,14 @@ class SdJwtSerializationTest : FunSpec({
             ),
             sex = IsoIec5218Gender.NOT_APPLICABLE,
             nationalities = setOf(randomString()),
-            issuanceDate = Clock.System.now(),
-            expiryDate = Clock.System.now().plus(300.seconds),
+            issuanceDate = if (Random.nextBoolean())
+                LocalDateOrInstant.Instant(randomInstant())
+            else
+                LocalDateOrInstant.LocalDate(randomLocalDate()),
+            expiryDate = if (Random.nextBoolean())
+                LocalDateOrInstant.Instant(randomInstant())
+            else
+                LocalDateOrInstant.LocalDate(randomLocalDate()),
             issuingAuthority = randomString(),
             documentNumber = randomString(),
             issuingCountry = randomString(),

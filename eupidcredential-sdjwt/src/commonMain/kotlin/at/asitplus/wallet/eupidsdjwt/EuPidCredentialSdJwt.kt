@@ -66,11 +66,11 @@ data class EuPidCredentialSdJwt(
 
     /** Date (and if possible time) when the person identification data was issued and/or the administrative validity period of the person identification data began. */
     @SerialName(SdJwtAttributes.ISSUANCE_DATE)
-    val issuanceDate: Instant,
+    val issuanceDate: LocalDateOrInstant,
 
     /** Date (and if possible time) when the person identification data will expire. */
     @SerialName(SdJwtAttributes.EXPIRY_DATE)
-    val expiryDate: Instant,
+    val expiryDate: LocalDateOrInstant,
 
     /**
      * Name of the administrative authority that has issued this PID instance, or
