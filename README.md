@@ -63,6 +63,10 @@ These are implemented for SD-JWT:
 
 ## Changelog
 
+Release 1.1.0:
+ - `expiry_date` and `issuance_date` are of type `LocalDateOrInstant` acc. to spec "Date (and if possible time) ..."
+ - Add `LocalDateOrInstant` and serializer for it
+ 
 Release 1.0.1:
 - Add additional claims `age_over_13`, `age_over_25`, `age_over_60`, `age_over_62`, `age_over_65`, `age_over_68`
 

@@ -33,6 +33,7 @@ object Initializer {
             is LocalDate -> vckJsonSerializer.encodeToJsonElement(it)
             is UInt -> vckJsonSerializer.encodeToJsonElement(it)
             is Instant -> vckJsonSerializer.encodeToJsonElement(it)
+            is LocalDateOrInstant -> vckJsonSerializer.encodeToJsonElement(it)
             else -> null
         }
     }
