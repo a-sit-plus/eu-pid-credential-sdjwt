@@ -1,16 +1,15 @@
 package at.asitplus.wallet.eupidsdjwt
 
+import at.asitplus.wallet.lib.data.LocalDateOrInstant
 import at.asitplus.wallet.lib.data.vckJsonSerializer
 import at.asitplus.wallet.lib.iso.vckCborSerializer
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
-import kotlinx.datetime.Clock
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.decodeFromByteArray
 import kotlinx.serialization.encodeToByteArray
 import kotlin.random.Random
 import kotlin.random.nextUInt
-import kotlin.time.Duration.Companion.seconds
 
 @OptIn(ExperimentalSerializationApi::class)
 class SdJwtSerializationTest : FunSpec({
@@ -51,8 +50,14 @@ class SdJwtSerializationTest : FunSpec({
             ),
             sex = IsoIec5218Gender.NOT_APPLICABLE,
             nationalities = setOf(randomString()),
-            issuanceDate = Clock.System.now(),
-            expiryDate = Clock.System.now().plus(300.seconds),
+            issuanceDate = if (Random.nextBoolean())
+                LocalDateOrInstant.Instant(randomInstant())
+            else
+                LocalDateOrInstant.LocalDate(randomLocalDate()),
+            expiryDate = if (Random.nextBoolean())
+                LocalDateOrInstant.Instant(randomInstant())
+            else
+                LocalDateOrInstant.LocalDate(randomLocalDate()),
             issuingAuthority = randomString(),
             documentNumber = randomString(),
             issuingCountry = randomString(),

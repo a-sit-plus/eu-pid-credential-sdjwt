@@ -2,6 +2,7 @@ package at.asitplus.wallet.eupidsdjwt
 
 import at.asitplus.wallet.lib.JsonValueEncoder
 import at.asitplus.wallet.lib.LibraryInitializer
+import at.asitplus.wallet.lib.data.LocalDateOrInstant
 import at.asitplus.wallet.lib.data.vckJsonSerializer
 import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
@@ -33,6 +34,7 @@ object Initializer {
             is LocalDate -> vckJsonSerializer.encodeToJsonElement(it)
             is UInt -> vckJsonSerializer.encodeToJsonElement(it)
             is Instant -> vckJsonSerializer.encodeToJsonElement(it)
+            is LocalDateOrInstant -> vckJsonSerializer.encodeToJsonElement(it)
             else -> null
         }
     }
