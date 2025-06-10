@@ -1,9 +1,9 @@
 package at.asitplus.wallet.eupidsdjwt
 
 import at.asitplus.wallet.eupidsdjwt.EuPidSdJwtScheme.SdJwtAttributes
+import at.asitplus.wallet.lib.data.LocalDateOrInstant
 import io.matthewnelson.encoding.base64.Base64
 import io.matthewnelson.encoding.core.Encoder.Companion.encodeToString
-import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.serializers.LocalDateIso8601Serializer
 import kotlinx.serialization.SerialName
@@ -66,11 +66,11 @@ data class EuPidCredentialSdJwt(
 
     /** Date (and if possible time) when the person identification data was issued and/or the administrative validity period of the person identification data began. */
     @SerialName(SdJwtAttributes.ISSUANCE_DATE)
-    val issuanceDate: Instant,
+    val issuanceDate: LocalDateOrInstant,
 
     /** Date (and if possible time) when the person identification data will expire. */
     @SerialName(SdJwtAttributes.EXPIRY_DATE)
-    val expiryDate: Instant,
+    val expiryDate: LocalDateOrInstant,
 
     /**
      * Name of the administrative authority that has issued this PID instance, or

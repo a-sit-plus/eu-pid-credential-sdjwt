@@ -25,7 +25,7 @@ kotlin {
         commonMain {
             dependencies {
                 api(serialization("json"))
-                api("at.asitplus.wallet:vck:5.5.2")
+                api("at.asitplus.wallet:vck:5.7.0-SNAPSHOT")
             }
         }
     }
@@ -49,7 +49,7 @@ publishing {
             pom {
                 name.set("EU PID Credential")
                 description.set("Use data provided by EU Wallets as a W3C VC, SD-JWT, or ISO 18013-5 Credential")
-                url.set("https://github.com/a-sit-plus/eu-pid-credential/")
+                url.set("https://github.com/a-sit-plus/eu-pid-credential-sdjwt/")
                 licenses {
                     license {
                         name.set("The Apache License, Version 2.0")
@@ -64,9 +64,9 @@ publishing {
                     }
                 }
                 scm {
-                    connection.set("scm:git:git@github.com:a-sit-plus/eu-pid-credential.git")
-                    developerConnection.set("scm:git:git@github.com:a-sit-plus/eu-pid-credential.git")
-                    url.set("https://github.com/a-sit-plus/eu-pid-credential/")
+                    connection.set("scm:git:git@github.com:a-sit-plus/eu-pid-credential-sdjwt.git")
+                    developerConnection.set("scm:git:git@github.com:a-sit-plus/eu-pid-credential-sdjwt.git")
+                    url.set("https://github.com/a-sit-plus/eu-pid-credential-sdjwt/")
                 }
             }
         }
