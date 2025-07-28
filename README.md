@@ -63,6 +63,11 @@ These are implemented for SD-JWT:
 
 ## Changelog
 
+Release 1.1.1:
+- VC-K 5.8.0
+- Kotlin 2.2.0
+- kotlinx-datetime 0.7.1
+
 Release 1.1.0:
  - Update to VC-K 5.7.0
  - `expiry_date` and `issuance_date` are of type `LocalDateOrInstant` from vc-k acc. to spec "Date (and if possible time) ..."
