@@ -4,7 +4,7 @@ import at.asitplus.wallet.lib.JsonValueEncoder
 import at.asitplus.wallet.lib.LibraryInitializer
 import at.asitplus.wallet.lib.data.LocalDateOrInstant
 import at.asitplus.wallet.lib.data.vckJsonSerializer
-import kotlinx.datetime.Instant
+import kotlin.time.Instant
 import kotlinx.datetime.LocalDate
 import kotlinx.serialization.json.encodeToJsonElement
 

@@ -20,25 +20,12 @@ For the ISO-compliant version as well as SD-JWT prior to ARF 1.8.0 of this crede
 
 Be sure to call `at.asitplus.wallet.eupidsdjwt.Initializer.initWithVCK()` first thing in your application.
 
-See [ARF PID Rulebook](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-3/annex-3.01-pid-rulebook.md) for a list of attributes.
+See [PID Rulebook](https://github.com/eu-digital-identity-wallet/eudi-doc-attestation-rulebooks-catalog/blob/main/rulebooks/pid/pid-rulebook.md) from 2025-10-02 for a list of attributes.
 
 These are implemented for SD-JWT:
 - `family_name`
 - `given_name`
 - `birthdate`
-- `age_equal_or_over.12`
-- `age_equal_or_over.13`
-- `age_equal_or_over.14`
-- `age_equal_or_over.16`
-- `age_equal_or_over.18`
-- `age_equal_or_over.21`
-- `age_equal_or_over.25`
-- `age_equal_or_over.60`
-- `age_equal_or_over.62`
-- `age_equal_or_over.65`
-- `age_equal_or_over.68`
-- `age_in_years`
-- `age_birth_year`
 - `birth_family_name`
 - `birth_given_name`
 - `place_of_birth.locality`
@@ -65,19 +52,38 @@ These are implemented for SD-JWT:
 - `phone_number`
 - `trust_anchor`
 
+These attributes are removed from the spec, but kept for backwards compatibility with our implementations:
+- `age_equal_or_over.12`
+- `age_equal_or_over.13`
+- `age_equal_or_over.14`
+- `age_equal_or_over.16`
+- `age_equal_or_over.18`
+- `age_equal_or_over.21`
+- `age_equal_or_over.25`
+- `age_equal_or_over.60`
+- `age_equal_or_over.62`
+- `age_equal_or_over.65`
+- `age_equal_or_over.68`
+- `age_in_years`
+- `age_birth_year`
+
 ## Changelog
 
+Release 1.3.0:
+ - VC-K 5.9.0
+ - Deprecate age attributes
+
 Release 1.2.0:
-- VC-K 5.8.0
-- Kotlin 2.2.0
-- kotlinx-datetime 0.7.1
+ - VC-K 5.8.0
+ - Kotlin 2.2.0
+ - kotlinx-datetime 0.7.1
 
 Release 1.1.0:
  - Update to VC-K 5.7.0
  - `expiry_date` and `issuance_date` are of type `LocalDateOrInstant` from vc-k acc. to spec "Date (and if possible time) ..."
  
 Release 1.0.1:
-- Add additional claims `age_over_13`, `age_over_25`, `age_over_60`, `age_over_62`, `age_over_65`, `age_over_68`
+ - Add additional claims `age_over_13`, `age_over_25`, `age_over_60`, `age_over_62`, `age_over_65`, `age_over_68`
 
 Release 1.0.0:
  - Initial release for EU PID acc. to ARF 1.9.0
