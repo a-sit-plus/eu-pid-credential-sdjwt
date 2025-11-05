@@ -72,6 +72,7 @@ These attributes are removed from the spec, but kept for backwards compatibility
 Release 1.3.0:
  - VC-K 5.9.0
  - Deprecate age attributes
+ - Kotlin 2.2.21
 
 Release 1.2.0:
  - VC-K 5.8.0
