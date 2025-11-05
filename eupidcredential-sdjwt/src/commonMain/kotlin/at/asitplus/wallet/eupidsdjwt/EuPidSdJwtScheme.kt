@@ -5,7 +5,9 @@ import at.asitplus.wallet.lib.data.ConstantIndex.CredentialRepresentation.*
 
 
 /**
- * PID scheme according to [ANNEX 3.0.1 PID Rulebook, v1.9.0 from April 2025](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v1.9.0/docs/annexes/annex-3/annex-3.01-pid-rulebook.md)
+ * PID scheme according to
+ * [PID Rulebook](https://github.com/eu-digital-identity-wallet/eudi-doc-attestation-rulebooks-catalog/blob/main/rulebooks/pid/pid-rulebook.md)
+ * from 2025-10-02.
  */
 object EuPidSdJwtScheme : ConstantIndex.CredentialScheme {
     override val schemaUri: String = "https://wallet.a-sit.at/schemas/1.0.0/eupidsdjwt.json"
@@ -50,14 +52,6 @@ object EuPidSdJwtScheme : ConstantIndex.CredentialScheme {
                 DOCUMENT_NUMBER,
                 ISSUING_JURISDICTION,
 
-                AGE_EQUAL_OR_OVER_12,
-                AGE_EQUAL_OR_OVER_14,
-                AGE_EQUAL_OR_OVER_16,
-                AGE_EQUAL_OR_OVER_18,
-                AGE_EQUAL_OR_OVER_21,
-                AGE_IN_YEARS,
-                AGE_BIRTH_YEAR,
-
                 TRUST_ANCHOR,
             )
         }
@@ -74,9 +68,7 @@ object EuPidSdJwtScheme : ConstantIndex.CredentialScheme {
         )
     }
 
-    /**
-     * Per <https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/pull/160>
-     */
+    @Suppress("DEPRECATION")
     object SdJwtAttributes {
         /** Current last name(s) or surname(s) of the user to whom the person identification data relates. */
         const val FAMILY_NAME = "family_name"
@@ -87,80 +79,106 @@ object EuPidSdJwtScheme : ConstantIndex.CredentialScheme {
         /** Day, month, and year on which the user to whom the person identification data relates was born. */
         const val BIRTH_DATE = "birthdate"
 
+        @Deprecated("Removed from PID rulebook")
         /** Additional current age attestations, prefix, see [AgeEqualOrOver] */
         const val PREFIX_AGE_EQUAL_OR_OVER = "age_equal_or_over"
 
+        @Deprecated("Removed from PID rulebook")
         /** Additional current age attestations: Attesting whether the PID User is currently over 12 years old. */
         const val AGE_EQUAL_OR_OVER_12 = "$PREFIX_AGE_EQUAL_OR_OVER.12"
 
+        @Deprecated("Removed from PID rulebook")
         /** Additional current age attestations: Attesting whether the PID User is currently over 13 years old. */
         const val AGE_EQUAL_OR_OVER_13 = "$PREFIX_AGE_EQUAL_OR_OVER.13"
 
+        @Deprecated("Removed from PID rulebook")
         /** Additional current age attestations: Attesting whether the PID User is currently over 14 years old. */
         const val AGE_EQUAL_OR_OVER_14 = "$PREFIX_AGE_EQUAL_OR_OVER.14"
 
+        @Deprecated("Removed from PID rulebook")
         /** Additional current age attestations: Attesting whether the PID User is currently over 16 years old. */
         const val AGE_EQUAL_OR_OVER_16 = "$PREFIX_AGE_EQUAL_OR_OVER.16"
 
+        @Deprecated("Removed from PID rulebook")
         /** Attesting whether the User to whom the person identification data relates is currently an adult (true) or a minor (false). */
         const val AGE_EQUAL_OR_OVER_18 = "$PREFIX_AGE_EQUAL_OR_OVER.18"
 
+        @Deprecated("Removed from PID rulebook")
         /** Additional current age attestations: Attesting whether the PID User is currently over 21 years old. */
         const val AGE_EQUAL_OR_OVER_21 = "$PREFIX_AGE_EQUAL_OR_OVER.21"
 
+        @Deprecated("Removed from PID rulebook")
         /** Additional current age attestations: Attesting whether the PID User is currently over 25 years old. */
         const val AGE_EQUAL_OR_OVER_25 = "$PREFIX_AGE_EQUAL_OR_OVER.25"
 
+        @Deprecated("Removed from PID rulebook")
         /** Additional current age attestations: Attesting whether the PID User is currently over 60 years old. */
         const val AGE_EQUAL_OR_OVER_60 = "$PREFIX_AGE_EQUAL_OR_OVER.60"
 
+        @Deprecated("Removed from PID rulebook")
         /** Additional current age attestations: Attesting whether the PID User is currently over 62 years old. */
         const val AGE_EQUAL_OR_OVER_62 = "$PREFIX_AGE_EQUAL_OR_OVER.62"
 
+        @Deprecated("Removed from PID rulebook")
         /** Additional current age attestations: Attesting whether the PID User is currently over 65 years old. */
         const val AGE_EQUAL_OR_OVER_65 = "$PREFIX_AGE_EQUAL_OR_OVER.65"
 
+        @Deprecated("Removed from PID rulebook")
         /** Additional current age attestations: Attesting whether the PID User is currently over 68 years old. */
         const val AGE_EQUAL_OR_OVER_68 = "$PREFIX_AGE_EQUAL_OR_OVER.68"
 
+        @Deprecated("Removed from PID rulebook")
         object AgeEqualOrOver {
+            @Deprecated("Removed from PID rulebook")
             /** Additional current age attestations: Attesting whether the PID User is currently over 12 years old. */
             const val EQUAL_OR_OVER_12 = "12"
 
+            @Deprecated("Removed from PID rulebook")
             /** Additional current age attestations: Attesting whether the PID User is currently over 13 years old. */
             const val EQUAL_OR_OVER_13 = "13"
 
+            @Deprecated("Removed from PID rulebook")
             /** Additional current age attestations: Attesting whether the PID User is currently over 14 years old. */
             const val EQUAL_OR_OVER_14 = "14"
 
+            @Deprecated("Removed from PID rulebook")
             /** Additional current age attestations: Attesting whether the PID User is currently over 16 years old. */
             const val EQUAL_OR_OVER_16 = "16"
 
+            @Deprecated("Removed from PID rulebook")
             /** Attesting whether the User to whom the person identification data relates is currently an adult (true) or a minor (false). */
             const val EQUAL_OR_OVER_18 = "18"
 
+            @Deprecated("Removed from PID rulebook")
             /** Additional current age attestations: Attesting whether the PID User is currently over 21 years old. */
             const val EQUAL_OR_OVER_21 = "21"
 
+            @Deprecated("Removed from PID rulebook")
             /** Additional current age attestations: Attesting whether the PID User is currently over 25 years old. */
             const val EQUAL_OR_OVER_25 = "25"
 
+            @Deprecated("Removed from PID rulebook")
             /** Additional current age attestations: Attesting whether the PID User is currently over 60 years old. */
             const val EQUAL_OR_OVER_60 = "60"
 
+            @Deprecated("Removed from PID rulebook")
             /** Additional current age attestations: Attesting whether the PID User is currently over 62 years old. */
             const val EQUAL_OR_OVER_62 = "62"
 
+            @Deprecated("Removed from PID rulebook")
             /** Additional current age attestations: Attesting whether the PID User is currently over 65 years old. */
             const val EQUAL_OR_OVER_65 = "65"
 
+            @Deprecated("Removed from PID rulebook")
             /** Additional current age attestations: Attesting whether the PID User is currently over 68 years old. */
             const val EQUAL_OR_OVER_68 = "68"
         }
 
+        @Deprecated("Removed from PID rulebook")
         /** The current age of the User to whom the person identification data relates in years. */
         const val AGE_IN_YEARS = "age_in_years"
 
+        @Deprecated("Removed from PID rulebook")
         /** The year when the User to whom the person identification data relates was born. */
         const val AGE_BIRTH_YEAR = "age_birth_year"
 
@@ -255,7 +273,7 @@ object EuPidSdJwtScheme : ConstantIndex.CredentialScheme {
             const val HOUSE_NUMBER = "house_number"
         }
 
-        /** PID User’s gender, using a string value like `female`, `male`, or custom text values. */
+        /** See [IsoIec5218Gender]. */
         const val SEX = "sex"
 
         /** One or more alpha-2 country codes as specified in ISO 3166-1, representing the nationality of the user to

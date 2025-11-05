@@ -5,9 +5,6 @@ import at.asitplus.wallet.lib.data.LocalDateOrInstant
 import at.asitplus.wallet.lib.data.vckJsonSerializer
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
-import io.kotest.provided.randomInstant
-import io.kotest.provided.randomLocalDate
-import io.kotest.provided.randomString
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.decodeFromByteArray
 import kotlinx.serialization.encodeToByteArray
@@ -18,23 +15,12 @@ import kotlin.random.nextUInt
 class SdJwtSerializationTest : FunSpec({
 
     test("serialize credential") {
+        Initializer.initWithVCK()
+        
         val credential = EuPidCredentialSdJwt(
             familyName = randomString(),
             givenName = randomString(),
             birthDate = randomLocalDate(),
-            ageEqualOrOver = AgeEqualOrOverSdJwt(
-                equalOrOver12 = Random.nextBoolean(),
-                equalOrOver13 = Random.nextBoolean(),
-                equalOrOver14 = Random.nextBoolean(),
-                equalOrOver16 = Random.nextBoolean(),
-                equalOrOver18 = Random.nextBoolean(),
-                equalOrOver21 = Random.nextBoolean(),
-                equalOrOver25 = Random.nextBoolean(),
-                equalOrOver60 = Random.nextBoolean(),
-                equalOrOver62 = Random.nextBoolean(),
-                equalOrOver65 = Random.nextBoolean(),
-                equalOrOver68 = Random.nextBoolean(),
-            ),
             ageInYears = Random.nextUInt(),
             ageBirthYear = Random.nextUInt(),
             familyNameBirth = randomString(),

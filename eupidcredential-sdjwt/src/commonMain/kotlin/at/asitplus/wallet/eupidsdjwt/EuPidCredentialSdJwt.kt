@@ -28,14 +28,20 @@ data class EuPidCredentialSdJwt(
     @Serializable(with = LocalDateIso8601Serializer::class)
     val birthDate: LocalDate,
 
+    @Suppress("DEPRECATION")
+    @Deprecated("Removed from PID rulebook")
     /** Additional current age attestations. */
     @SerialName(SdJwtAttributes.PREFIX_AGE_EQUAL_OR_OVER)
-    val ageEqualOrOver: AgeEqualOrOverSdJwt,
+    val ageEqualOrOver: AgeEqualOrOverSdJwt? = null,
 
+    @Suppress("DEPRECATION")
+    @Deprecated("Removed from PID rulebook")
     /** The current age of the User to whom the person identification data relates in years. */
     @SerialName(SdJwtAttributes.AGE_IN_YEARS)
     val ageInYears: UInt? = null,
 
+    @Suppress("DEPRECATION")
+    @Deprecated("Removed from PID rulebook")
     /** The year when the User to whom the person identification data relates was born. */
     @SerialName(SdJwtAttributes.AGE_BIRTH_YEAR)
     val ageBirthYear: UInt? = null,
@@ -56,7 +62,7 @@ data class EuPidCredentialSdJwt(
     @SerialName(SdJwtAttributes.PREFIX_ADDRESS)
     val address: AddressSdJwt,
 
-    /** PID User’s gender, using a string value like `female`, `male`, or custom text values. */
+    /** See [IsoIec5218Gender]. */
     @SerialName(SdJwtAttributes.SEX)
     val sex: IsoIec5218Gender? = null,
 
@@ -124,6 +130,7 @@ data class EuPidCredentialSdJwt(
     val trustAnchor: String? = null,
 ) {
 
+    @Suppress("DEPRECATION")
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other == null || this::class != other::class) return false
@@ -157,6 +164,7 @@ data class EuPidCredentialSdJwt(
         return true
     }
 
+    @Suppress("DEPRECATION")
     override fun hashCode(): Int {
         var result = familyName.hashCode()
         result = 31 * result + givenName.hashCode()
@@ -184,6 +192,7 @@ data class EuPidCredentialSdJwt(
         return result
     }
 
+    @Suppress("DEPRECATION")
     override fun toString(): String {
         return "EuPidCredentialSdJwt(" +
                 "familyName='$familyName', " +
@@ -213,6 +222,8 @@ data class EuPidCredentialSdJwt(
     }
 }
 
+@Suppress("DEPRECATION")
+@Deprecated("Removed from PID rulebook")
 @Serializable
 data class AgeEqualOrOverSdJwt(
     /** Additional current age attestations: Attesting whether the PID User is currently over 12 years old. */
@@ -263,14 +274,10 @@ data class AgeEqualOrOverSdJwt(
 @Serializable
 data class PlaceOfBirthSdJwt(
     /** The country where the PID User was born, as an Alpha-2 country code as specified in ISO 3166-1. */
-    @Suppress("DEPRECATION")
-    @Deprecated("Removed in ARF 1.5.0")
     @SerialName(SdJwtAttributes.PlaceOfBirth.COUNTRY)
     val country: String? = null,
 
     /** The state, province, district, or local area where the PID User was born. */
-    @Suppress("DEPRECATION")
-    @Deprecated("Removed in ARF 1.5.0")
     @SerialName(SdJwtAttributes.PlaceOfBirth.REGION)
     val region: String? = null,
 
