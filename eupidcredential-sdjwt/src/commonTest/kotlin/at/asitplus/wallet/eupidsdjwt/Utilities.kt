@@ -1,17 +1,8 @@
-package io.kotest.provided
-import at.asitplus.test.XmlReportingProjectConfig
-import at.asitplus.wallet.eupidsdjwt.Initializer
+package at.asitplus.wallet.eupidsdjwt
+
 import kotlinx.datetime.LocalDate
 import kotlin.random.Random
 import kotlin.time.Instant
-
-/** Wires KMP JUnit XML reporting */
-class ProjectConfig : XmlReportingProjectConfig() {
-    init {
-        Initializer.initWithVCK()
-    }
-}
-
 
 internal fun randomLocalDate() = LocalDate(Random.nextInt(1900, 2100), Random.nextInt(1, 12), Random.nextInt(1, 28))
 
