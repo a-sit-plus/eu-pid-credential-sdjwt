@@ -1,11 +1,9 @@
 package at.asitplus.wallet.eupidsdjwt
 
 import at.asitplus.signum.indispensable.cosef.io.coseCompliantSerializer
-import at.asitplus.testballoon.invoke
 import at.asitplus.wallet.lib.data.LocalDateOrInstant
 import at.asitplus.wallet.lib.data.vckJsonSerializer
-import de.infix.testBalloon.framework.testSuite
-import io.kotest.core.spec.style.FunSpec
+import de.infix.testBalloon.framework.core.testSuite
 import io.kotest.matchers.shouldBe
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.decodeFromByteArray
@@ -16,7 +14,7 @@ import kotlin.random.nextUInt
 @OptIn(ExperimentalSerializationApi::class)
 val SdJwtSerializationTest by testSuite {
 
-    "serialize credential" {
+    test("serialize credential") {
 
         val credential = EuPidCredentialSdJwt(
             familyName = randomString(),

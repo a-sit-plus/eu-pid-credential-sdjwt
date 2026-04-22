@@ -69,9 +69,13 @@ These attributes are removed from the spec, but kept for backwards compatibility
 
 ## Changelog
 
+Release 1.4.0:
+ - Kotlin 2.3.0
+ - VC-K 5.12.0
+
 Release 1.3.0:
  - VC-K 5.9.0
- - Deprecate age attributes
+ - Deprecate age attributes removed from the latest PID rulebook on 2025-10-02
  - Kotlin 2.2.21
 
 Release 1.2.0:

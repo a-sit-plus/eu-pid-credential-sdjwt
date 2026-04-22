@@ -1,14 +1,15 @@
 import at.asitplus.gradle.Logger
+import at.asitplus.gradle.kotest
 import at.asitplus.gradle.serialization
 import at.asitplus.gradle.setupDokka
 
 plugins {
-    kotlin("multiplatform")
-    kotlin("plugin.serialization")
-    id("at.asitplus.gradle.conventions")
+    alias(libs.plugins.kotlin.multiplatform)
+    alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.asitplus.gradle.conventions)
     id("org.jetbrains.dokka")
     id("signing")
-    id("de.infix.testBalloon")
+    alias(libs.plugins.testballoon)
 }
 
 /* required for maven publication */
@@ -18,7 +19,6 @@ version = artifactVersion
 
 kotlin {
     jvm()
-    iosX64()
     iosArm64()
     iosSimulatorArm64()
 
@@ -26,7 +26,13 @@ kotlin {
         commonMain {
             dependencies {
                 api(serialization("json"))
-                api("at.asitplus.wallet:vck:5.9.0")
+                api(libs.vck)
+            }
+        }
+        commonTest {
+            dependencies {
+                implementation(libs.testballoon)
+                implementation(kotest("assertions-core"))
             }
         }
     }
@@ -86,4 +92,3 @@ signing {
     useInMemoryPgpKeys(signingKeyId, signingKey, signingPassword)
     sign(publishing.publications)
 }
-

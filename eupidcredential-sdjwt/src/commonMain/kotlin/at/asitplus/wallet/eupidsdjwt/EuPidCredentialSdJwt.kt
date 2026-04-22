@@ -11,7 +11,9 @@ import kotlinx.serialization.Serializable
 
 
 /**
- * PID scheme according to [ANNEX 3.0.1 PID Rulebook, v1.9.0 from April 2025](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/v1.9.0/docs/annexes/annex-3/annex-3.01-pid-rulebook.md)
+ * PID scheme according to
+ * [PID Rulebook](https://github.com/eu-digital-identity-wallet/eudi-doc-attestation-rulebooks-catalog/blob/main/rulebooks/pid/pid-rulebook.md)
+ * from 2025-10-02.
  */
 @Serializable
 data class EuPidCredentialSdJwt(
