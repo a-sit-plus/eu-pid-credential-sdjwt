@@ -11,3 +11,4 @@ pluginManagement {
 
 rootProject.name = "eu-pid-credential-sd-jwt"
 include(":eupidcredential-sdjwt")
+include(":metadata")
